@@ -6,13 +6,13 @@ using TMPro;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    private Vector2[] movementPattern = { Vector2.left, Vector2.left, Vector2.left, Vector2.left, Vector2.left, Vector2.left, Vector2.down,
-                                Vector2.right ,Vector2.right ,Vector2.right, Vector2.right, Vector2.right, Vector2.right, Vector2.down};
+    private Vector2[] movementPattern = { Vector2.left, Vector2.left, Vector2.left, Vector2.left, Vector2.left, Vector2.left, Vector2.down, Vector2.down,
+                                Vector2.right ,Vector2.right ,Vector2.right, Vector2.right, Vector2.right, Vector2.right, Vector2.down, Vector2.down};
     private int startIndex = 3;
     private int currentIndex;
     private float movementSpeed = 0.3f;
     private int shootChance;
-    private float health = 1;
+    private float health = 2;
 
     private GameObject gameManager;
     public Rigidbody2D damageSource;
@@ -23,8 +23,8 @@ public class EnemyBehaviour : MonoBehaviour
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
         currentIndex = startIndex;
-        InvokeRepeating("ChangePositon", 2f, 2f);
-        InvokeRepeating("Fire", 1f, 2f);
+        InvokeRepeating("ChangePositon", 1f, 1f);
+        InvokeRepeating("Fire", 0.5f, 1f);
         
     }
 

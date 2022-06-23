@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            Destroy(gameObject);
+            Die();
             Destroy(collision.gameObject);
         }
         //TakeDamage();
