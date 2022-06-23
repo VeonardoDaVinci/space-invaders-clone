@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,7 +14,14 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public float health = 3;
     public Rigidbody2D projectile;
+    private GameObject gameManager;
 
+    public Text healthCount;
+
+    private void Start()
+    {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+    }
 
     private void OnEnable()
     {
@@ -33,8 +41,26 @@ public class PlayerController : MonoBehaviour
         bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * 500f);
     }
 
+    void TakeDamage(int amount = 1)
+    {
+        health -= amount;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        gameManager.GetComponent<UIScript>().SetLose();
+        gameManager.GetComponent<UIScript>().LoadNextLevel();
+        this.gameObject.SetActive(false);
+        
+    }
+
     private void Update()
     {
+        healthCount.text = health.ToString();
         if (fire.triggered)
         {
             Fire(projectile);
@@ -42,7 +68,24 @@ public class PlayerController : MonoBehaviour
         movementDirection = movement.ReadValue<Vector2>();
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision);
+        if (collision.gameObject.tag == "EnemyProjectile")
+        {
+            TakeDamage();
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+        }
+        //TakeDamage();
+    }
+ 
+   
 
     private void FixedUpdate()
     {

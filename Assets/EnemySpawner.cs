@@ -7,8 +7,8 @@ public class EnemySpawner : MonoBehaviour
     public Rigidbody2D npc;
     private static int columns = 5;
     private static int rows = 4;
-    public Vector2 startPosition = new Vector2(-2.0f, 8.0f);
-    public int gridSize = 1;
+    public Vector2 startPosition = new Vector2(-4.0f, 8.0f);
+    public float gridSize = 2f;
     private Rigidbody2D[,] enemyList = new Rigidbody2D[columns,rows];
 
     private void Awake()
@@ -19,7 +19,6 @@ public class EnemySpawner : MonoBehaviour
             {
                 Rigidbody2D enemy = Instantiate(npc, new Vector3(startPosition.x+(i*gridSize), startPosition.y - (j * gridSize)), transform.rotation, transform) as Rigidbody2D;
                 enemyList[i,j] = enemy;
-
             }
         }
     }

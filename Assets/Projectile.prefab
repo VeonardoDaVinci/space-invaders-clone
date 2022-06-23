@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 556086643402383322}
   - component: {fileID: -3001213583650488555}
   - component: {fileID: -6306153284421751286}
+  - component: {fileID: 1003915924962692684}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Projectile
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Sprite: {fileID: -3209795618878514358, guid: 8c35c30f6176ff644a94e902b7a636a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -118,6 +119,18 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0024452268, y: -0.14426991}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.43153304
+--- !u!114 &1003915924962692684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2450905857932562591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 632a951e5a7281f4087154db632ce914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

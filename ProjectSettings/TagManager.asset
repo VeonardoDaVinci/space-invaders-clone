@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Projectile
   - EnemyProjectile
+  - Enemy
+  - Score
+  - GameManager
+  - Messege
+  - ScoreSafe
+  - ProjectileNet
   layers:
   - Default
   - TransparentFX
