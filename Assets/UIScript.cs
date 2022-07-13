@@ -62,6 +62,8 @@ public class UIScript : MonoBehaviour
             }
         }
 
+
+
         //if(!GameObject.FindGameObjectWithTag("Player"))
         //{
         //    win = false;

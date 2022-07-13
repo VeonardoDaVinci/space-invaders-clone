@@ -16,9 +16,9 @@ public class EnemyBehaviour : MonoBehaviour
 
 
     private GameObject gameManager;
-    public Rigidbody2D damageSource;
-    public Rigidbody2D projectile;
-    public Rigidbody2D rb;
+    [SerializeField] private Rigidbody2D damageSource;
+    [SerializeField] private Rigidbody2D projectile;
+    [SerializeField] private Rigidbody2D rb;
 
     private void Start()
     {
