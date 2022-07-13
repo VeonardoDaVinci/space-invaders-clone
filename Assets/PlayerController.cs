@@ -71,13 +71,13 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log(collision);
-        if (collision.gameObject.tag == "EnemyProjectile")
+        if (collision.gameObject.CompareTag("EnemyProjectile"))
         {
             TakeDamage();
             Destroy(collision.gameObject);
         }
 
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             Die();
             Destroy(collision.gameObject);

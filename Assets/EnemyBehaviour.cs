@@ -61,7 +61,7 @@ public class EnemyBehaviour : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log(collision);
-        if (collision.gameObject.tag=="Projectile")
+        if (collision.gameObject.CompareTag("Projectile"))
         {
             TakeDamage();
             Destroy(collision.gameObject);
