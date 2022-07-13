@@ -5,10 +5,10 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public Rigidbody2D npc;
-    private static int columns = 5;
-    private static int rows = 4;
-    public Vector2 startPosition = new Vector2(-4.0f, 8.0f);
-    public float gridSize = 2f;
+    private const int columns = 5;
+    private const int rows = 4;
+    [SerializeField] private Vector2 startPosition = new Vector2(-3.0f, 4.0f);
+    [SerializeField] private float gridSize = 1.5f;
     private Rigidbody2D[,] enemyList = new Rigidbody2D[columns,rows];
 
     private void Awake()

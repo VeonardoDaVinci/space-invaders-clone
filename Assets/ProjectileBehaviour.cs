@@ -6,7 +6,7 @@ public class ProjectileBehaviour : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "ProjectileNet")
+        if (collision.gameObject.CompareTag("ProjectileNet"))
         {
             Destroy(this.gameObject);
         }

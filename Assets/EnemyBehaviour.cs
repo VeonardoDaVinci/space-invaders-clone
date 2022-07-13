@@ -14,6 +14,7 @@ public class EnemyBehaviour : MonoBehaviour
     private int shootChance;
     private float health = 2;
 
+
     private GameObject gameManager;
     public Rigidbody2D damageSource;
     public Rigidbody2D projectile;
@@ -34,6 +35,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (health <= 0)
         {
             gameManager.GetComponent<UIScript>().score += 100;
+            gameManager.GetComponent<UIScript>().enemyCount--;
             Destroy(this.gameObject);
             
         }

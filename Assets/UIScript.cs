@@ -10,6 +10,7 @@ public class UIScript : MonoBehaviour
     private GameObject scoreText;
     private GameObject messege;
     private GameObject scoreSafeText;
+    [HideInInspector] public int enemyCount;
     public static bool win = false;
     private static int scoreSafe;
 
@@ -19,6 +20,8 @@ public class UIScript : MonoBehaviour
         messege = GameObject.FindGameObjectWithTag("Messege");
         scoreSafeText = GameObject.FindGameObjectWithTag("ScoreSafe");
         scoreText = GameObject.FindGameObjectWithTag("Score");
+        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+
         if (scoreSafeText)
         {
             scoreSafeText.GetComponent<TextMeshProUGUI>().text = scoreSafe.ToString();
@@ -49,11 +52,10 @@ public class UIScript : MonoBehaviour
     
     private void Update()
     {
-        
 
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+            if (enemyCount == 0)
             {
                 win = true;
                 LoadNextLevel();
