@@ -38,8 +38,17 @@ public class PlayerController : MonoBehaviour
 
     private void Fire(Rigidbody2D projectile)
     {
-        Rigidbody2D bullet = Instantiate(projectile, transform.position,transform.rotation) as Rigidbody2D;
-        bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * 500f);
+        GameObject bullet = ObjectPool.SharedInstance.GetPooledObject();
+        if (bullet != null)
+        {
+            bullet.transform.position = transform.position;
+            bullet.transform.rotation = transform.rotation;
+            bullet.SetActive(true);
+            bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * 500f);
+        }
+
+        //Rigidbody2D bullet = Instantiate(projectile, transform.position,transform.rotation) as Rigidbody2D;
+        //bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * 500f);
     }
 
     void TakeDamage(int amount = 1)

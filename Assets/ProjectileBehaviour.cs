@@ -8,7 +8,7 @@ public class ProjectileBehaviour : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ProjectileNet"))
         {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 }

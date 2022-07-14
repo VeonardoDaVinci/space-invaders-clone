@@ -66,7 +66,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Projectile"))
         {
             TakeDamage();
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
     }
 
