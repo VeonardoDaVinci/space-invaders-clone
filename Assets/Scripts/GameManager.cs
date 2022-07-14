@@ -44,11 +44,11 @@ public class GameManager : Singleton<GameManager>
     public void LoadNextLevel()
     {
         scoreSafe = score;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Game");
     }
     public void LoadPreviousLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene("GameOver");
         scoreSafe = 0;
     }
 
