@@ -48,7 +48,6 @@ public class EnemyBehaviour : MonoBehaviour
         if(shootChance<2)
         {
             GameObject bullet = EnemyObjectPool.SharedInstance.GetPooledObject();
-            Debug.Log(bullet);
             if (bullet != null)
             {
                 bullet.transform.position = transform.position;
@@ -71,7 +70,6 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision);
         if (collision.gameObject.CompareTag("Projectile"))
         {
             TakeDamage();
