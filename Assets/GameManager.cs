@@ -4,29 +4,41 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class UIScript : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     public int score = 0;
-    private GameObject scoreText;
-    private GameObject messege;
+    private GameObject healthObject;
+    [HideInInspector] public TextMeshProUGUI healthCount;
+    private GameObject scoreObject;
+    private TextMeshProUGUI scoreText;
+    private GameObject messegeObject;
+    private TextMeshProUGUI messegeText;
     private GameObject scoreSafeText;
     private GameObject player;
     [HideInInspector] public int enemyCount;
     public static bool win = false;
     private static int scoreSafe;
 
-    private void Start()
+
+
+    private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        messege = GameObject.FindGameObjectWithTag("Messege");
+
+        healthObject = GameObject.FindGameObjectWithTag("Health");
+        if (healthObject) healthCount = healthObject.GetComponent<TextMeshProUGUI>();
+
+        messegeObject = GameObject.FindGameObjectWithTag("Messege");
+        if (messegeObject) messegeText = messegeObject.GetComponent<TextMeshProUGUI>();
+        
+        
+        scoreObject = GameObject.FindGameObjectWithTag("Score");
+        if (scoreObject)  scoreText = scoreObject.GetComponent<TextMeshProUGUI>(); 
+
         scoreSafeText = GameObject.FindGameObjectWithTag("ScoreSafe");
-        scoreText = GameObject.FindGameObjectWithTag("Score");
         enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
 
-        if (scoreSafeText)
-        {
-            scoreSafeText.GetComponent<TextMeshProUGUI>().text = scoreSafe.ToString();
-        }
+        if (scoreSafeText) scoreSafeText.GetComponent<TextMeshProUGUI>().text = scoreSafe.ToString();
     }
 
     public void LoadNextLevel()
@@ -63,28 +75,20 @@ public class UIScript : MonoBehaviour
             }
         }
 
-
-
-        //if(!GameObject.FindGameObjectWithTag("Player"))
-        //{
-        //    win = false;
-        //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        //}
-
         if (scoreText)
         {
-        scoreText.GetComponent<TextMeshProUGUI>().text = score.ToString();
+        scoreText.text = score.ToString();
         }
 
-        if (messege)
+        if (messegeObject)
         {
             if (win)
             {
-                messege.GetComponent<TextMeshProUGUI>().text = "You win!";
+                messegeText.text = "You win!";
             }
             else
             {
-                messege.GetComponent<TextMeshProUGUI>().text = "You lose!";
+                messegeText.text = "You lose!";
             }
         }
     }

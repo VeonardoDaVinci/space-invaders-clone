@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
@@ -14,13 +15,13 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public float health = 3;
     public Rigidbody2D projectile;
-    private GameObject gameManager;
+    private GameManager gameManager;
 
-    public Text healthCount;
+    
 
     private void Start()
     {
-        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+        gameManager = GameManager.Instance;
     }
 
     private void OnEnable()
@@ -58,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        healthCount.text = health.ToString();
+        gameManager.healthCount.text = health.ToString();
         if (fire.triggered)
         {
             Fire(projectile);

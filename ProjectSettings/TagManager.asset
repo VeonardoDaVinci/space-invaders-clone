@@ -12,6 +12,7 @@ TagManager:
   - Messege
   - ScoreSafe
   - ProjectileNet
+  - Health
   layers:
   - Default
   - TransparentFX

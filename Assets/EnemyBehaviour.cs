@@ -15,14 +15,14 @@ public class EnemyBehaviour : MonoBehaviour
     private float health = 2;
 
 
-    private GameObject gameManager;
+    private GameManager gameManager;
     [SerializeField] private Rigidbody2D damageSource;
     [SerializeField] private Rigidbody2D projectile;
     [SerializeField] private Rigidbody2D rb;
 
     private void Start()
     {
-        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+        gameManager = GameManager.Instance;
         currentIndex = startIndex;
         InvokeRepeating("ChangePositon", 1f, 1f);
         InvokeRepeating("Fire", 0.5f, 1f);
@@ -34,8 +34,8 @@ public class EnemyBehaviour : MonoBehaviour
         health -= amount;
         if (health <= 0)
         {
-            gameManager.GetComponent<UIScript>().score += 100;
-            gameManager.GetComponent<UIScript>().enemyCount--;
+            gameManager.score += 100;
+            gameManager.enemyCount--;
             Destroy(this.gameObject);
             
         }
