@@ -52,8 +52,6 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
-        gameManager.GetComponent<UIScript>().SetLose();
-        gameManager.GetComponent<UIScript>().LoadNextLevel();
         this.gameObject.SetActive(false);
         
     }
