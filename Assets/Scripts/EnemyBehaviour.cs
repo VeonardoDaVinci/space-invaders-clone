@@ -47,8 +47,17 @@ public class EnemyBehaviour : MonoBehaviour
         shootChance = Random.Range(1, 10);
         if(shootChance<2)
         {
-            Rigidbody2D bullet = Instantiate(projectile, transform.position, transform.rotation) as Rigidbody2D;
-            bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * -200f);
+            GameObject bullet = EnemyObjectPool.SharedInstance.GetPooledObject();
+            Debug.Log(bullet);
+            if (bullet != null)
+            {
+                bullet.transform.position = transform.position;
+                bullet.transform.rotation = transform.rotation;
+                bullet.SetActive(true);
+                bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * -200f);
+            }
+            //Rigidbody2D bullet = Instantiate(projectile, transform.position, transform.rotation) as Rigidbody2D;
+            
         }
     }
 
